@@ -353,15 +353,16 @@ static void set_options_from_request(VALUE self, VALUE request) {
 
     rb_hash_foreach(headers, each_http_header, self);
   }
+
   switch(TYPE(action_name)){
   case T_STRING:
     action = rb_to_id(action_name);
     break;
   case T_SYMBOL:
-    action = SYM2STR(action_name);
+    action = SYM2ID(action_name);
     break;
   default:
-    rb_raise(rb_eArgError, "type must be a symbol or string");
+    rb_raise(rb_eArgError, "request type must be a symbol or string");
     break;
   }
 
