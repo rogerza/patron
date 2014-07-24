@@ -448,7 +448,7 @@ static void set_options_from_request(VALUE self, VALUE request) {
       }
       curl_easy_setopt(curl, CURLOPT_CUSTOMREQUEST, "DELETE");
 
-  } else if (action == rb_intern("HEAD")) {
+  } else if (action == rb_intern("HEAD") || action == rb_intern("head")) {
     curl_easy_setopt(curl, CURLOPT_NOBODY, 1);
   } else {
     curl_easy_setopt(curl, CURLOPT_CUSTOMREQUEST, StringValuePtr(action_name));

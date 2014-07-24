@@ -82,7 +82,7 @@ module Patron
     def upload_data=(data)
       @upload_data = case data
       when Hash
-        self.multipart ? data : Util.build_query_string_from_hash(data, action == 'POST')
+        self.multipart ? data : Util.build_query_string_from_hash(data, @action == 'POST')
       else
         data
       end
